@@ -1,0 +1,59 @@
+spring:
+  application:
+    name: agent-ledger
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/ledger_db
+    username: postgres
+    password: "{cipher}53f62c10c3749d3ed8e45a8526f831fb89f97070aa59448c3598cdca3fd115db"
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+
+  liquibase:
+    enabled: true
+    change-log: classpath:db/changelog/master-changelog.yml
+
+  cache:
+    type: redis
+
+  data:
+    redis:
+      host: localhost
+      port: 6379
+
+  kafka:
+    consumer:
+      group-id: my-group-id
+    bootstrap-servers: localhost:9092
+
+server:
+  port: 18080
+
+security:
+  restriction:
+    api-key: tB4z9vmQ7xuYZFzN8ZgDFE3kVzWNqJp03O0TcfyvmZ0=
+
+logging:
+  level:
+    root: INFO
+    org:
+      hibernate:
+        SQL: DEBUG
+        type:
+          descriptor:
+            sql:
+              BasicBinder: TRACE
+  file:
+    name: ${user.dir}/logs/${spring.application.name}.log
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+    ip-address: 127.0.0.1
