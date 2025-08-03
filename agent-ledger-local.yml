@@ -5,7 +5,7 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/ledger_db
     username: postgres
-    password: "{cipher}53f62c10c3749d3ed8e45a8526f831fb89f97070aa59448c3598cdca3fd115dbFSDFSDFS"
+    password: "{cipher}53f62c10c3749d3ed8e45a8526f831fb89f97070aa59448c3598cdca3fd115db"
     driver-class-name: org.postgresql.Driver
 
   jpa:
@@ -57,5 +57,6 @@ eureka:
   instance:
     prefer-ip-address: true
     ip-address: 127.0.0.1
+
 
 
